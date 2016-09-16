@@ -16,12 +16,24 @@ opener()
 def chooser():
     choices = []
     jobs = JOBS.keys()
-    for i in range(len(JOBS) -1 ):
-        x = jobs[i]
-        print x
-        for j in range(int(JOBS[jobs[i]] * 10) -1 ):
-            choices[j] = jobs[i]
+    for i in jobs:
+        for j in range(int(JOBS[i] * 10) -1 ):
+            choices.append(i)
     a = random.randrange(len(choices))
-    return choices[a]
+    return(choices[a])
 
-print chooser()
+print(chooser())
+
+def trial():
+    i = 0
+    results = {}
+    while i < 1000:
+        x = chooser()
+        if x in results.keys():
+            results[x] = (results[x] + 1)
+        else:
+            results[x] = 1
+        i = i + 1
+    print(results)
+
+
